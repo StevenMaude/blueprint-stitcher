@@ -4,10 +4,12 @@ from __future__ import (absolute_import, division,
                         print_function, unicode_literals)
 import os
 import importlib
-from app import flask_app
+from flask import Flask
 
-blueprint_names = [f for f in os.listdir('app/blueprint')
-                   if os.path.isdir(os.path.join('app/blueprint', f))]
+flask_app = Flask('blueprint-stitcher')
+
+blueprint_names = [f for f in os.listdir('blueprint')
+                   if os.path.isdir(os.path.join('blueprint', f))]
 
 for blueprint_name in blueprint_names:
     module_name = "app.blueprint.{0}.{0}".format(blueprint_name)
